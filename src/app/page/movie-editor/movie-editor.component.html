@@ -1,10 +1,139 @@
 <!-- {{ movie$ | async | json }} -->
 
-<div class="row">
+<!-- { "id": 1, "title": "Wild Hogs", "genre": "Adventure|Comedy", "director": "Gena
+Kevern", "releaseYear": 1992, "poster":
+"https://nettuts.hu/img/cinema-posters/district2.jpg", "studio": "Warner
+Brothers", "active": true } -->
+
+<div class="row mt-3" *ngIf="movie$ | async as movie">
   <div class="col-12">
-    <form style="max-width: 400px" action="" class="mx-auto">
+    <form
+      #movieEditorForm="ngForm"
+      (ngSubmit)="onUpdate(movie)"
+      style="max-width: 400px"
+      action=""
+      class="mx-auto"
+    >
       <div class="form-group">
-        <label for=""></label>
+        <label>Title</label>
+        <input
+          type="text"
+          class="form-control"
+          name="title"
+          [(ngModel)]="movie.title"
+          required
+        />
+      </div>
+      <div
+        *ngIf="movieEditorForm.controls['title']?.invalid"
+        class="error-message"
+      >
+        All the fields are required!
+      </div>
+      <div class="form-group">
+        <label>Genre</label>
+        <input
+          type="text"
+          class="form-control"
+          name="genre"
+          [(ngModel)]="movie.genre"
+          required
+        />
+      </div>
+      <div
+        *ngIf="movieEditorForm.controls['genre']?.invalid"
+        class="error-message"
+      >
+        All the fields are required!
+      </div>
+      <div class="form-group">
+        <label>Director</label>
+        <input
+          type="text"
+          class="form-control"
+          name="director"
+          [(ngModel)]="movie.director"
+          required
+        />
+      </div>
+      <div
+        *ngIf="movieEditorForm.controls['director']?.invalid"
+        class="error-message"
+      >
+        All the fields are required!
+      </div>
+      <div class="form-group">
+        <label>Release Year</label>
+        <input
+          type="text"
+          class="form-control"
+          name="releaseYear"
+          [(ngModel)]="movie.releaseYear"
+          required
+        />
+      </div>
+      <div
+        *ngIf="movieEditorForm.controls['releaseYear']?.invalid"
+        class="error-message"
+      >
+        All the fields are required!
+      </div>
+      <div class="form-group">
+        <label>Poster</label>
+        <input
+          type="text"
+          class="form-control"
+          name="poster"
+          [(ngModel)]="movie.poster"
+          required
+        />
+      </div>
+      <div
+        *ngIf="movieEditorForm.controls['poster']?.invalid"
+        class="error-message"
+      >
+        All the fields are required!
+      </div>
+      <div class="form-group">
+        <label>Studio</label>
+        <input
+          type="text"
+          class="form-control"
+          name="studio"
+          [(ngModel)]="movie.studio"
+          required
+        />
+      </div>
+      <div
+        *ngIf="movieEditorForm.controls['studio']?.invalid"
+        class="error-message"
+      >
+        All the fields are required!
+      </div>
+      <div class="form-group">
+        <label>Active</label>
+        <input
+          type="text"
+          class="form-control"
+          name="active"
+          [(ngModel)]="movie.active"
+          required
+        />
+      </div>
+      <div
+        *ngIf="movieEditorForm.controls['active']?.invalid"
+        class="error-message"
+      >
+        All the fields are required!
+      </div>
+      <div class="d-grid gap-2 mt-3">
+        <button
+          [disabled]="movieEditorForm.invalid"
+          class="btn btn-primary"
+          type="sumbit"
+        >
+          <i class="fa fa-save"></i> Update Movie
+        </button>
       </div>
     </form>
   </div>
