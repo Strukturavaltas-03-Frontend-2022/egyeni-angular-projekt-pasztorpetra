@@ -23,6 +23,19 @@ export class MovieHandlerService {
   }
 
   create(movie: Movie): Observable<Movie> {
-    return this.http.post<Movie>(``);
+    return this.http.post<Movie>(`${this.apiUrl}${this.entityName}`, movie);
+  }
+
+  update(movie: Movie): Observable<Movie> {
+    return this.http.patch<Movie>(
+      `${this.apiUrl}${this.entityName}/${movie.id}`,
+      movie
+    );
+  }
+
+  remove(movie: Movie): Observable<Movie> {
+    return this.http.delete<Movie>(
+      `${this.apiUrl}${this.entityName}/${movie.id}`
+    );
   }
 }
