@@ -10,6 +10,7 @@ import { MovieHandlerService } from 'src/app/service/movie-handler.service';
 })
 export class MovielistComponent implements OnInit {
   movieList$: Observable<Movie[]> = this.movieService.getAll();
+  viewType: 'table' | 'card' = 'table';
   constructor(private movieService: MovieHandlerService) {}
 
   ngOnInit(): void {}
